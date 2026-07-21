@@ -1,30 +1,31 @@
 import { useState } from 'react'
-import { ArrowRight, Menu, X } from 'lucide-react'
+import { ArrowRight, Menu, X, Disc3, Wrench, RefreshCw, Tag } from 'lucide-react'
 
-const NAV_LINKS = ['Home', 'Projects', 'Studio', 'Reach Us']
+const NAV_LINKS = ['Accueil', 'Services', 'Pneus Occasion', 'Contact']
+
+const SERVICES = [
+  { icon: Wrench, label: 'Montage' },
+  { icon: RefreshCw, label: 'Démontage' },
+  { icon: Tag, label: 'Vente pneus neufs & occasion' },
+]
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black font-geist">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute h-full w-full object-cover object-[70%_center]"
-      >
-        <source
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4"
-          type="video/mp4"
+      <div className="absolute h-full w-full bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.18),transparent_55%),linear-gradient(160deg,#0a0a0a_0%,#000000_60%)]">
+        <Disc3
+          className="absolute -right-[15%] top-1/2 h-[130vh] w-[130vh] -translate-y-1/2 animate-[spin_40s_linear_infinite] text-white/[0.05] sm:-right-[10%]"
+          strokeWidth={0.5}
         />
-      </video>
+        <div className="absolute inset-0 bg-[repeating-linear-gradient(115deg,transparent,transparent_38px,rgba(255,255,255,0.03)_38px,rgba(255,255,255,0.03)_40px)]" />
+      </div>
 
       <nav className="relative z-30 flex items-center justify-between px-6 py-5 md:px-12 lg:px-16">
         <div className="flex items-center gap-10">
           <span className="text-lg font-semibold tracking-tight text-white sm:text-xl">
-            Foldcraft
+            Teker Pneus
           </span>
           <div className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => (
@@ -43,7 +44,7 @@ function App() {
           type="button"
           className="hidden rounded-lg bg-white px-5 py-2 text-sm font-medium text-black transition-transform hover:scale-105 md:block"
         >
-          Let's Talk
+          Nous Contacter
         </button>
 
         <button
@@ -100,7 +101,7 @@ function App() {
             onClick={() => setMobileMenuOpen(false)}
             className="mt-6 w-fit rounded-full bg-white px-8 py-3.5 text-base font-medium text-black hover:scale-105"
           >
-            Let's Talk
+            Nous Contacter
           </button>
         </div>
       </div>
@@ -108,27 +109,37 @@ function App() {
       <div className="relative z-10 flex h-[calc(100vh-80px)] flex-col justify-between px-6 pb-10 pt-12 sm:pb-12 sm:pt-16 md:px-12 md:pb-16 md:pt-20 lg:px-16">
         <div className="max-w-3xl">
           <div className="mb-4 animate-[fadeSlideUp_0.8s_ease_0.2s_both] text-xs text-white/90 sm:mb-6 sm:text-sm">
-            Brand & Visual Storytelling
+            Montage & Vente de Pneus · Eghezée
           </div>
           <h1 className="animate-[fadeSlideUp_0.8s_ease_0.4s_both] text-3xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Shaping visual
+            Vos pneus,
             <br />
-            narratives,
-            <br />
-            one pixel at a time.
+            notre expertise,
+            <br />à Eghezée.
           </h1>
         </div>
 
         <div>
+          <div className="mb-5 flex animate-[fadeSlideUp_0.8s_ease_0.6s_both] flex-wrap gap-3 sm:mb-6">
+            {SERVICES.map(({ icon: Icon, label }) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm sm:text-sm"
+              >
+                <Icon size={14} />
+                {label}
+              </span>
+            ))}
+          </div>
           <p className="mb-5 max-w-sm animate-[fadeSlideUp_0.8s_ease_0.7s_both] text-sm leading-relaxed text-white/60 sm:mb-6 sm:max-w-lg sm:text-base md:text-lg">
-            Turning vision into reality through craft, motion, and an endless
-            pursuit of beauty.
+            Montage, démontage et vente de pneus neufs et d'occasion. Un
+            service rapide et de qualité pour tous les véhicules.
           </p>
           <button
             type="button"
             className="inline-flex animate-[fadeSlideUp_0.8s_ease_0.9s_both] items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition-transform hover:scale-105 sm:px-6 sm:py-3"
           >
-            Explore Work
+            Voir nos services
             <ArrowRight size={16} />
           </button>
         </div>
