@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ArrowRight, Menu, X, Disc3, Wrench, RefreshCw, Tag } from 'lucide-react'
+import { ArrowRight, Menu, X, Wrench, RefreshCw, Tag } from 'lucide-react'
+import garageHero from './assets/garage-hero.jpg'
 
 const NAV_LINKS = ['Accueil', 'Services', 'Pneus Occasion', 'Contact']
 
@@ -14,13 +15,13 @@ function App() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black font-geist">
-      <div className="absolute h-full w-full bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.18),transparent_55%),linear-gradient(160deg,#0a0a0a_0%,#000000_60%)]">
-        <Disc3
-          className="absolute -right-[15%] top-1/2 h-[130vh] w-[130vh] -translate-y-1/2 animate-[spin_40s_linear_infinite] text-white/[0.05] sm:-right-[10%]"
-          strokeWidth={0.5}
-        />
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(115deg,transparent,transparent_38px,rgba(255,255,255,0.03)_38px,rgba(255,255,255,0.03)_40px)]" />
-      </div>
+      <img
+        src={garageHero}
+        alt="Atelier Teker Pneus à Eghezée"
+        className="absolute h-full w-full object-cover object-center"
+      />
+      <div className="absolute h-full w-full bg-[linear-gradient(0deg,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.55)_40%,rgba(0,0,0,0.35)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(220,38,38,0.16),transparent_55%)]" />
 
       <nav className="relative z-30 flex items-center justify-between px-6 py-5 md:px-12 lg:px-16">
         <div className="flex items-center gap-10">
